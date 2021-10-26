@@ -32,10 +32,10 @@ public class HelloController implements Initializable {
                 System.out.println("Pulsado boton2");
             }
         });
-        boton2.setOnAction(new EventHandler<ActionEvent>() {
+        boton3.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println("Pulsado boton2");
+                System.out.println("Pulsado boton3");
             }
         });
     }
