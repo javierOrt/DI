@@ -16,6 +16,6 @@
       </HBox>
    </top>
    <center>
-      <TextField BorderPane.alignment="CENTER" fx:id="textoCentro"/>
+      <TextField fx:id="textoCentro" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

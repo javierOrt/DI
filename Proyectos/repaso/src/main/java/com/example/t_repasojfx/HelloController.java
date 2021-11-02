@@ -107,6 +107,8 @@ public class HelloController implements Initializable , EventHandler<Event> {
         if (event.getEventType() == KeyEvent.KEY_RELEASED)
             if (textoCentro.getText().length()>9)
                 event.consume();
+            if (event.isConsumed())
+                System.out.println("Okey");
     }
 
     /*
