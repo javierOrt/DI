@@ -27,7 +27,7 @@
          <children>
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Borrar" GridPane.columnIndex="1" />
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="=" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="," GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="." GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Salir" GridPane.rowIndex="4" />
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="+" GridPane.columnIndex="3" GridPane.rowIndex="3" />
