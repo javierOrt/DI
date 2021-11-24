@@ -1,8 +1,9 @@
-import java.util.Arrays;
 import java.io.IOException;
+import java.util.Arrays;
 
-public class Programa1 {
-    public static void main(String[] args){
+public class Main {
+
+    public static void main(String[] args) {
         if(args.length <= 0) {
             //Pregunto si hay algún argumento
             System.out.println("Debemos indicar algun argumento");
@@ -17,7 +18,7 @@ public class Programa1 {
             int codigoReturn = p.waitFor();
             //Devolvemos el resultado
             System.out.println("La ejecucion de "+ Arrays.toString(args)+" devuelve "+codigoReturn);
-        } catch (IOException  e) {
+        } catch (IOException e) {
             e.printStackTrace();
             System.exit(2);
         } catch (InterruptedException e){
