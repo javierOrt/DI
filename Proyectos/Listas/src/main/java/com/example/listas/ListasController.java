@@ -11,10 +11,15 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -42,10 +47,13 @@ public class ListasController implements Initializable {
     private Label labelCombo, labelChoice;
 
     @FXML
-    private Button btnComprobar;
+    private Button btnComprobar, btnDetalle;
 
     @FXML
     private ImageView imageView;
+
+    @FXML
+    private HBox hbox;
 
     private ObservableList<Persona> listaCombo, listaChoice;
 
@@ -70,6 +78,34 @@ public class ListasController implements Initializable {
             }
         });
 
+        btnDetalle.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (listView.getSelectionModel().getSelectedIndex()<0){
+                    System.out.println("No hay nada seleccionado");
+                } else {
+                    Stage stage = new Stage();
+                    stage.setTitle("Detalle");
+                    FXMLLoader loader = null;
+                    Parent root = null;
+
+                    try {
+
+                        loader = new FXMLLoader(getClass().getResource("detalle-view.fxml"));
+                        root = loader.load();
+
+                    } catch (IOException e) {
+
+                        e.printStackTrace();
+                    }
+
+                    Scene scene = new Scene(root, 400, 400);
+                    stage.setScene(scene);
+                    stage.show();
+                }
+            }
+        });
+
         listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observableValue, Object o, Object t1) {
@@ -90,9 +126,24 @@ public class ListasController implements Initializable {
                 try {
                     InputStream inputStream = new URL(url).openStream();
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+
+                    //Para una linea
+                    /*
                     String respuesta = bufferedReader.readLine();
-                    JSONObject jsonGeneral = new JSONObject(respuesta);
-                    JSONArray arrayResultados = jsonGeneral.getJSONArray("results");
+                    JSONObject jsonObject = new JSONObject(respuesta);
+                     */
+
+                    //Para varias lineas se usa el while
+                    String linea ="";
+                    StringBuffer stringBuffer = new StringBuffer();
+
+                    while ((linea=bufferedReader.readLine()) != null){
+                        stringBuffer.append(linea);
+                    }
+
+                    JSONObject jsonObject = new JSONObject(stringBuffer.toString());
+                    JSONArray arrayResultados = jsonObject.getJSONArray("results");
+
                     JSONObject objetoPelicula;
                     for (int i = 0; i < arrayResultados.length(); i++) {
                         objetoPelicula = arrayResultados.getJSONObject(i);
