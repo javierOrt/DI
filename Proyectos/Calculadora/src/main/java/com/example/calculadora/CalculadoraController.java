@@ -22,6 +22,9 @@ public class CalculadoraController implements Initializable, EventHandler<Action
     @FXML
     private TextField campoTexto;
 
+    String operacion;
+    double numero1,numero2,resultado;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         acciones();
@@ -39,8 +42,6 @@ public class CalculadoraController implements Initializable, EventHandler<Action
     public void handle(ActionEvent actionEvent) {
 
         Button btnAux = (Button) actionEvent.getSource();
-        String numeroUno;
-        String numeroDos;
 
         if (!(btnAux.getText().equals("=") ||
             btnAux.getText().equals("+") ||
@@ -53,11 +54,39 @@ public class CalculadoraController implements Initializable, EventHandler<Action
             btnAux.getText().equals("AC"))){
 
             campoTexto.appendText(btnAux.getText());
-            numeroUno = campoTexto.getText();
+        }
+
+        if (btnAux.getText().equals("+") ||
+                btnAux.getText().equals("-") ||
+                btnAux.getText().equals("/") ||
+                btnAux.getText().equals("X") ||
+                btnAux.getText().equals("Borrar")||
+                btnAux.getText().equals("Salir") ||
+                btnAux.getText().equals("AC")||
+                btnAux.getText().equals("%")){
+
+            numero1 = Double.parseDouble(campoTexto.getText());
+            operacion = btnAux.getText();
+            campoTexto.clear();
+        }
+
+        if (btnAux.getText().equals("=")) {
+
+            numero2 = Double.parseDouble(campoTexto.getText());
+
+            switch (operacion) {
+                case "+" -> resultado = numero1 + numero2;
+                case "-" -> resultado = numero1 - numero2;
+                case "X" -> resultado = numero1 * numero2;
+                case "/" -> resultado = numero1 / numero2;
+                //case "%" -> resultado = numero1 / numero2;
+                case "AC"-> {campoTexto.clear();
+                            numero1=0;
+                            numero2=0;
+                            operacion = "";}
             }
 
-            if (btnAux.getText().equals("+")){
-            campoTexto.setText(btnAux.getText());
+            campoTexto.setText(String.valueOf(resultado));
         }
     }
 }
