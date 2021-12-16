@@ -45,15 +45,14 @@ public class HelloController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         instancias();
+        initGUI();
         asociarElementos();
-        imagen();
         lecturaJSON();
-        new Thread(tareaJson).start();
         acciones();
 
     }
 
-    private void imagen() {
+    private void initGUI() {
         imagenJson.setImage(new Image("https://api.chucknorris.io/img/chucknorris_logo_coloured_small@2x.png"));
     }
 
@@ -147,7 +146,7 @@ public class HelloController implements Initializable {
                 InputStream inputStream = new URL(url).openStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
                 String linea = null;
-                StringBuffer stringBuffer = new StringBuffer();
+                StringBuilder stringBuffer = new StringBuilder();
 
                 while ( (linea=bufferedReader.readLine())!=null ){
                     stringBuffer.append(linea);
@@ -161,5 +160,7 @@ public class HelloController implements Initializable {
                 return null;
             }
         };
+
+        new Thread(tareaJson).start();
     }
 }
