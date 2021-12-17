@@ -50,7 +50,6 @@ public class HelloController implements Initializable {
         lecturaJSON();
         new Thread(tareaJson).start();
         acciones();
-
     }
 
     private void imagen() {
