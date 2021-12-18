@@ -49,21 +49,19 @@ public class CalculadoraController implements Initializable, EventHandler<Action
             btnAux.getText().equals("/") ||
             btnAux.getText().equals("X") ||
             btnAux.getText().equals("Borrar")||
-            btnAux.getText().equals("Salir") ||
-            btnAux.getText().equals("%") ||
+            btnAux.getText().equals("^") ||
             btnAux.getText().equals("AC"))){
 
             campoTexto.appendText(btnAux.getText());
         }
 
         if (btnAux.getText().equals("+") ||
-                btnAux.getText().equals("-") ||
-                btnAux.getText().equals("/") ||
-                btnAux.getText().equals("X") ||
-                btnAux.getText().equals("Borrar")||
-                btnAux.getText().equals("Salir") ||
-                btnAux.getText().equals("AC")||
-                btnAux.getText().equals("%")){
+            btnAux.getText().equals("-") ||
+            btnAux.getText().equals("/") ||
+            btnAux.getText().equals("X") ||
+            btnAux.getText().equals("Borrar")||
+            btnAux.getText().equals("AC")||
+            btnAux.getText().equals("^")){
 
             numero1 = Double.parseDouble(campoTexto.getText());
             operacion = btnAux.getText();
@@ -79,7 +77,7 @@ public class CalculadoraController implements Initializable, EventHandler<Action
                 case "-" -> resultado = numero1 - numero2;
                 case "X" -> resultado = numero1 * numero2;
                 case "/" -> resultado = numero1 / numero2;
-                //case "%" -> resultado = numero1 / numero2;
+                case "^" -> resultado = Math.pow(numero1,numero2);
                 case "AC"-> {campoTexto.clear();
                             numero1=0;
                             numero2=0;
