@@ -49,7 +49,6 @@ public class HelloController implements Initializable {
         asociarElementos();
         lecturaJSON();
         acciones();
-
     }
 
     private void initGUI() {
