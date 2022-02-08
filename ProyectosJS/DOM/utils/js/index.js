@@ -22,6 +22,7 @@ let lista = document.querySelector('#lista-contenido');
 
 let botonAgregar = document.querySelector("#boton-agregar");
 let inputAgregar = document.querySelector("input");
+inputAgregar.disabled = true;
 let botonBorrar = document.querySelector("#boton-borrar");
 let spanKeys = document.querySelector("span");
 let checkActivar = document.querySelector("#checkActivar");
@@ -44,10 +45,21 @@ botonAgregar.addEventListener("click", ()=>{
     }
 });
 
-checkActivar.addEventListener("click", (element)=>{
-    
+checkActivar.addEventListener("click", ()=>{
+    if(checkActivar.checked){
+        inputAgregar.disabled = false
+    } else {
+        inputAgregar.disabled = true
+    }
 });
 
 botonBorrar.addEventListener("click", ()=>{
-    
+    //lista.remove();
+    //lista.innerHTML = "";
+    // HTML COLLECTION --> FOR
+    // NODELIST --> FOREACH
+    let listaNodos = lista.children
+    for (let index = 0; index < listaNodos.length; index++) {
+        lista.removeChild(listaNodos[index]);
+    }
 });
